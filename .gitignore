@@ -1,0 +1,22 @@
+# 환경 변수 파일
+.env
+.env.local
+.env.*.local
+
+# 의존성 폴더
+node_modules/
+
+# 빌드 결과물
+dist/
+build/
+
+# IDE 설정
+.vscode/
+.idea/
+
+# OS 파일
+.DS_Store
+Thumbs.db
+
+# 로그 파일
+*.log

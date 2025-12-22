@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>로그인 - 고양이 쇼핑몰</title>
+
+  <!-- Pretendard 폰트 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- 헤더 영역 -->
+  <header>
+    <h1>고양이 쇼핑몰</h1>
+  </header>
+
+  <!-- 메인 컨텐츠 -->
+  <main>
+    <section class="login-container">
+      <h2>로그인</h2>
+
+      <!-- 로그인 폼 -->
+      <form id="loginForm" class="login-form">
+        <div class="form-group">
+          <label for="email">이메일</label>
+          <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+        </div>
+
+        <button type="submit" class="btn-login">로그인</button>
+      </form>
+
+      <!-- 회원가입 링크 -->
+      <div class="signup-link">
+        <p>아직 회원이 아니신가요? <a href="#" id="showSignup">회원가입</a></p>
+      </div>
+
+      <!-- 회원가입 폼 -->
+      <form id="signupForm" class="signup-form" style="display: none;">
+        <h2>회원가입</h2>
+
+        <div class="form-group">
+          <label for="signupEmail">이메일</label>
+          <input type="email" id="signupEmail" name="email" placeholder="이메일을 입력하세요" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signupPassword">비밀번호</label>
+          <input type="password" id="signupPassword" name="password" placeholder="비밀번호를 입력하세요" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signupPasswordConfirm">비밀번호 확인</label>
+          <input type="password" id="signupPasswordConfirm" name="passwordConfirm" placeholder="비밀번호를 다시 입력하세요" required>
+        </div>
+
+        <button type="submit" class="btn-signup">회원가입</button>
+      </form>
+
+      <!-- 로그인으로 돌아가기 -->
+      <div class="login-link" style="display: none;">
+        <p>이미 회원이신가요? <a href="#" id="showLogin">로그인</a></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 영역 -->
+  <footer>
+    <p>&copy; 2024 고양이 쇼핑몰. All rights reserved.</p>
+  </footer>
+
+  <script src="js/login.js"></script>
+</body>
+</html>
