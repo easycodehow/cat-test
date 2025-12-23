@@ -5,25 +5,659 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>고양이 쇼핑몰</title>
 
-  <!-- Pretendard 폰트 -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Chiron GoRound TC 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 아이콘 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- 헤더 영역 -->
-  <header>
+  <header class="header">
+    <!-- 상단 공지 영역 -->
+    <div class="header-top">
+      <div class="header-notice">
+        <span>공지</span> • 무료 배송 이벤트 진행중!
+      </div>
+    </div>
 
+    <!-- 메인 헤더 -->
+    <div class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <!-- 로고 -->
+          <div class="header-left">
+            <a href="index.html" class="logo">
+              <img src="img/logo_ko.png" alt="CATHOME">
+            </a>
+          </div>
+
+          <!-- 검색바 -->
+          <div class="header-center">
+            <div class="search-bar">
+              <input type="text" placeholder="어떤 상품을 찾으세요?">
+              <button type="button" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 우측 아이콘 메뉴 -->
+          <div class="header-right">
+            <a href="#" class="icon-link" title="알림">
+              <i class="fa-solid fa-bell"></i>
+            </a>
+            <a href="#" class="icon-link" title="장바구니">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <a href="login.html" class="icon-link" title="로그인">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 네비게이션 바 -->
+    <div class="header-nav">
+      <div class="container">
+        <nav class="nav">
+          <a href="#" class="nav-link">카테고리</a>
+          <a href="#" class="nav-link">핫딜</a>
+          <a href="#" class="nav-link">신상품</a>
+          <a href="#" class="nav-link">랭킹</a>
+          <a href="#" class="nav-link">이벤트</a>
+          <a href="#" class="nav-link">체험단</a>
+          <a href="board.html" class="nav-link">집사커뮤니티</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <!-- 메인 컨텐츠 -->
   <main>
+    <!-- 배너/슬라이더 섹션 -->
+    <section class="banner">
+      <div class="slider">
+        <div class="slider-wrapper">
+          <div class="slide active">
+            <img src="img/main-slide-01.jpg" alt="메인 슬라이드 1">
+          </div>
+          <div class="slide">
+            <img src="img/main-slide-02.jpg" alt="메인 슬라이드 2">
+          </div>
+          <div class="slide">
+            <img src="img/main-slide-03.jpg" alt="메인 슬라이드 3">
+          </div>
+        </div>
+        <button class="slider-btn prev">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn next">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+        <div class="slider-indicators">
+          <span class="current">1</span> / <span class="total">3</span>
+        </div>
+      </div>
+    </section>
 
+    <!-- 서브 카테고리 섹션 -->
+    <section class="sub-category">
+      <div class="container">
+        <div class="category-tabs">
+          <button class="tab active" data-tab="feed">사료</button>
+          <button class="tab" data-tab="snack">간식</button>
+          <button class="tab" data-tab="toy">장난감</button>
+        </div>
+
+        <!-- 사료 카테고리 -->
+        <div class="category-content active" data-content="feed">
+          <div class="category-grid">
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/05-dryfeed.png" alt="건식사료">
+              </div>
+              <span class="category-name">건식사료</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/06-canfeed.png" alt="캔/습식">
+              </div>
+              <span class="category-name">캔/습식</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/07-pouchfeed.png" alt="파우치">
+              </div>
+              <span class="category-name">파우치</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/08-airfeed.png" alt="화식/동결건조">
+              </div>
+              <span class="category-name">화식/동결건조</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/01-kitten.png" alt="어린고양이">
+              </div>
+              <span class="category-name">어린고양이</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/02-adult.png" alt="성묘">
+              </div>
+              <span class="category-name">성묘</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/03-senior.png" alt="노령묘">
+              </div>
+              <span class="category-name">노령묘</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/04-all.png" alt="전연령">
+              </div>
+              <span class="category-name">전연령</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 간식 카테고리 -->
+        <div class="category-content" data-content="snack">
+          <div class="category-grid">
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/09-fouchsnack.png" alt="파우치간식">
+              </div>
+              <span class="category-name">파우치간식</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/10-cansnack.png" alt="캔간식">
+              </div>
+              <span class="category-name">캔간식</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/11-jerky.png" alt="육포/스틱">
+              </div>
+              <span class="category-name">육포/스틱</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/12-treet.png" alt="츄르/트릿">
+              </div>
+              <span class="category-name">츄르/트릿</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/13-sausage.png" alt="소시지">
+              </div>
+              <span class="category-name">소시지</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/14-grass.png" alt="캣그라스">
+              </div>
+              <span class="category-name">캣그라스</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/15-raw.png" alt="동결건조간식">
+              </div>
+              <span class="category-name">동결건조간식</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/16-dental.png" alt="덴탈간식">
+              </div>
+              <span class="category-name">덴탈간식</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 장난감 카테고리 -->
+        <div class="category-content" data-content="toy">
+          <div class="category-grid">
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/17-toy.png" alt="장난감">
+              </div>
+              <span class="category-name">장난감</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/18-house.png" alt="하우스/스크래처">
+              </div>
+              <span class="category-name">하우스/스크래처</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/19-sand.png" alt="모래/패드">
+              </div>
+              <span class="category-name">모래/패드</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/20-bath.png" alt="목욕/위생">
+              </div>
+              <span class="category-name">목욕/위생</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/21-tower.png" alt="캣타워">
+              </div>
+              <span class="category-name">캣타워</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/22-waterer.png" alt="급수기/급식기">
+              </div>
+              <span class="category-name">급수기/급식기</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/23-clothes.png" alt="의류">
+              </div>
+              <span class="category-name">의류</span>
+            </div>
+            <div class="category-item">
+              <div class="category-icon">
+                <img src="img/24-bag.png" alt="이동가방">
+              </div>
+              <span class="category-name">이동가방</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 핫딜 섹션 -->
+    <section class="best-idea">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">핫딜</h2>
+          <a href="#" class="more-link">more</a>
+        </div>
+        <div class="product-list">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/deal-01.jpg" alt="핫딜 상품 1">
+            </div>
+            <div class="product-info">
+              <p class="product-name">프리미엄 고양이 사료</p>
+              <p class="product-price">29,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/deal-02.jpg" alt="핫딜 상품 2">
+            </div>
+            <div class="product-info">
+              <p class="product-name">고양이 간식 세트</p>
+              <p class="product-price">15,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/deal-03.jpg" alt="핫딜 상품 3">
+            </div>
+            <div class="product-info">
+              <p class="product-name">캣타워 스크래처</p>
+              <p class="product-price">49,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/deal-04.jpg" alt="핫딜 상품 4">
+            </div>
+            <div class="product-info">
+              <p class="product-name">고양이 장난감</p>
+              <p class="product-price">12,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/deal-05.jpeg" alt="핫딜 상품 5">
+            </div>
+            <div class="product-info">
+              <p class="product-name">캣닢 볼 세트</p>
+              <p class="product-price">8,900원</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 신상품 섹션 -->
+    <section class="best-new">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">신상품</h2>
+          <a href="#" class="more-link">more</a>
+        </div>
+        <div class="product-list">
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/new-01.png" alt="신상품 1">
+            </div>
+            <div class="product-info">
+              <p class="product-name">NEW 건식사료</p>
+              <p class="product-price">35,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/new-02.png" alt="신상품 2">
+            </div>
+            <div class="product-info">
+              <p class="product-name">프리미엄 캔사료</p>
+              <p class="product-price">18,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/new-03.jpg" alt="신상품 3">
+            </div>
+            <div class="product-info">
+              <p class="product-name">장난감 세트</p>
+              <p class="product-price">24,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/new-04.png" alt="신상품 4">
+            </div>
+            <div class="product-info">
+              <p class="product-name">고양이 간식</p>
+              <p class="product-price">9,900원</p>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <img src="img/new-05.jpeg" alt="신상품 5">
+            </div>
+            <div class="product-info">
+              <p class="product-name">캣타워</p>
+              <p class="product-price">89,900원</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 랭킹 섹션 -->
+    <section class="best-ranking">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">나캣평가</h2>
+        </div>
+        <div class="ranking-content">
+          <div class="ranking-tabs">
+            <button class="rank-tab active">사료</button>
+            <button class="rank-tab">간식</button>
+          </div>
+          <div class="ranking-list">
+            <div class="ranking-item active">
+              <div class="rank-header">
+                <span class="rank-number">1</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-01.jpeg" alt="랭킹 1위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">로얄캐닌 키튼 사료</p>
+                    <p class="rank-txt">어린 고양이 전용 영양 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">12개월 이하 어린 고양이를 위한 프리미엄 사료입니다. 성장기에 필요한 영양소가 균형있게 배합되어 있습니다.</p>
+                <p class="rank-price">42,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">2</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-02.png" alt="랭킹 2위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">힐스 어덜트 사료</p>
+                    <p class="rank-txt">성묘용 균형 영양식</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">성묘를 위한 최적의 영양 균형을 제공하는 프리미엄 사료입니다.</p>
+                <p class="rank-price">38,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">3</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-03.png" alt="랭킹 3위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">오리젠 캣&키튼</p>
+                    <p class="rank-txt">자연주의 프리미엄 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">신선한 육류 85% 함유로 자연 그대로의 영양을 제공합니다.</p>
+                <p class="rank-price">65,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">4</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-04.jpeg" alt="랭킹 4위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">퓨리나 프로플랜</p>
+                    <p class="rank-txt">실내 고양이용 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">실내 생활 고양이를 위한 특별 제조 사료로 체중 관리에 효과적입니다.</p>
+                <p class="rank-price">32,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">5</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-05.jpeg" alt="랭킹 5위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">ANF 유기농 사료</p>
+                    <p class="rank-txt">유기농 인증 건강식</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">유기농 재료로만 만든 건강한 사료입니다.</p>
+                <p class="rank-price">45,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">6</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-06.jpeg" alt="랭킹 6위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">나우 프레시 그레인프리</p>
+                    <p class="rank-txt">곡물 무첨가 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">곡물을 배제한 신선한 고단백 사료입니다.</p>
+                <p class="rank-price">55,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">7</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-07.jpeg" alt="랭킹 7위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">웰니스 코어</p>
+                    <p class="rank-txt">고단백 프리미엄 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">단백질 함량이 높아 활동적인 고양이에게 적합합니다.</p>
+                <p class="rank-price">48,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">8</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-08.jpeg" alt="랭킹 8위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">아카나 와일드 프레리</p>
+                    <p class="rank-txt">자연 방목 육류 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">자연 방목한 닭, 칠면조 등 신선한 육류로 제조되었습니다.</p>
+                <p class="rank-price">62,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">9</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-09.jpeg" alt="랭킹 9위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">블루 버팔로</p>
+                    <p class="rank-txt">자연주의 건강 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">천연 재료만을 사용한 건강한 사료입니다.</p>
+                <p class="rank-price">41,900원</p>
+              </div>
+            </div>
+            <div class="ranking-item">
+              <div class="rank-header">
+                <span class="rank-number">10</span>
+                <div class="rank-product">
+                  <div class="rank-img">
+                    <img src="img/rank-10.jpeg" alt="랭킹 10위">
+                  </div>
+                  <div class="rank-info">
+                    <p class="rank-name">테이스트 오브 더 와일드</p>
+                    <p class="rank-txt">야생 본능 자극 사료</p>
+                  </div>
+                </div>
+              </div>
+              <div class="rank-detail">
+                <p class="rank-desc">고양이의 야생 본능을 고려한 고단백 사료입니다.</p>
+                <p class="rank-price">52,900원</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 집사 커뮤니티 섹션 -->
+    <section class="best-community">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">집사 커뮤니티</h2>
+          <a href="#" class="more-link">more</a>
+        </div>
+        <div class="community-grid">
+          <div class="community-card">
+            <div class="comm-img">이미지</div>
+            <div class="comm-info">
+              <p class="comm-title">제목</p>
+              <p class="comm-date">날짜</p>
+            </div>
+          </div>
+          <div class="community-card">
+            <div class="comm-img">이미지</div>
+            <div class="comm-info">
+              <p class="comm-title">제목</p>
+              <p class="comm-date">날짜</p>
+            </div>
+          </div>
+          <div class="community-card">
+            <div class="comm-img">이미지</div>
+            <div class="comm-info">
+              <p class="comm-title">제목</p>
+              <p class="comm-date">날짜</p>
+            </div>
+          </div>
+          <div class="community-card">
+            <div class="comm-img">이미지</div>
+            <div class="comm-info">
+              <p class="comm-title">제목</p>
+              <p class="comm-date">날짜</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- 푸터 영역 -->
-  <footer>
-
+  <footer class="footer">
+    <div class="footer-banners">
+      <div class="container">
+        <div class="banner-grid">
+          <div class="footer-banner">배너 1</div>
+          <div class="footer-banner">배너 2</div>
+          <div class="footer-banner">배너 3</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-info">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">CATHOME</div>
+          <div class="footer-links">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">고객센터</a>
+          </div>
+          <div class="footer-text">
+            <p>상호명 | 대표자명 | 사업자등록번호</p>
+            <p>주소 | 이메일 | 전화번호</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script src="js/main.js"></script>

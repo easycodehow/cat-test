@@ -45,18 +45,20 @@
 ### 폰트
 제목 폰트: [Pretendard Bold]
 본문 폰트: [Pretendard / 18px ]
+
 ----------
 
 ## 프로젝트 초기 설정
-- [ ] GitHub 저장소 생성 (수동 작업)
-- [ ] Git 초기화 및 GitHub 연결
+- [x] GitHub 저장소 생성 (수동 작업)
+- [x] Git 초기화 및 GitHub 연결
 
 ## 프로젝트 템플릿 구축
-- [ ] 기본 HTML 페이지와 구조 생성하고 나머지 페이지는 이후에 추가 요청
-  - [ ] 폴더생성 (img/css/js)
-  - [ ] index.html (내용없이)
-  - [ ] login.html (로그인 UI만)
-- [ ] board.html (게시판 UI만)
+- [x] 폴더구조와 기본 HTML 페이지 및 설정 파일만 생성
+  - [x] 폴더생성 (img/css/js)
+  - [x] index.html (내용없이)
+  - [x] login.html (로그인 UI만)
+  - [x] board.html (게시판 UI만)
+  - [x] 설정파일 생성
 
 ## UI제작
 - [ ] 와이어프레임 
