@@ -171,58 +171,44 @@ button {
   color: #FF6D00;
 }
 
-/* 사용자 드롭다운 */
-.user-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  padding: 16px;
-  min-width: 200px;
-  z-index: 1000;
-  display: none;
+/* 사용자 정보 박스 */
+.user-info-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #333;
 }
 
-.user-dropdown.show {
-  display: block;
-}
-
-.user-info {
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 12px;
-}
-
-.user-name {
-  font-size: 14px;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 4px;
-}
-
-.user-email {
-  font-size: 12px;
+.user-info-box i {
+  font-size: 20px;
   color: #666;
 }
 
-.logout-btn {
-  width: 100%;
-  padding: 8px 16px;
-  background: #f5f5f5;
-  border: none;
-  border-radius: 6px;
+.user-id {
   font-size: 14px;
   font-weight: 500;
   color: #333;
-  cursor: pointer;
-  transition: all 0.3s;
 }
 
-.logout-btn:hover {
-  background: #FF6D00;
-  color: #fff;
+.divider {
+  color: #ddd;
+  font-size: 14px;
+}
+
+.logout-link {
+  font-size: 14px;
+  font-weight: 400;
+  color: #666;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  padding: 0;
+}
+
+.logout-link:hover {
+  color: #FF6D00;
+  text-decoration: underline;
 }
 
 /* 네비게이션 바 */
@@ -1028,6 +1014,23 @@ main {
 
   .search-btn i {
     font-size: 17px;
+  }
+
+  /* 사용자 정보 박스 모바일 */
+  .user-info-box {
+    gap: 6px;
+  }
+
+  .user-info-box i {
+    font-size: 18px;
+  }
+
+  .user-id {
+    font-size: 13px;
+  }
+
+  .logout-link {
+    font-size: 13px;
   }
 
   /* 네비게이션 */

@@ -43,59 +43,56 @@ async function logout() {
 
 // UI 업데이트
 function updateAuthUI() {
+  const headerRight = document.querySelector('.header-right');
   const userIcon = document.querySelector('.header-right .icon-link[title="로그인"]');
 
-  if (!userIcon) return;
+  if (!headerRight) return;
 
   if (currentUser) {
     // 로그인된 상태
     const userEmail = currentUser.email;
     const userName = userEmail.split('@')[0]; // 이메일의 @ 앞부분을 사용자명으로 사용
 
-    userIcon.innerHTML = `
-      <i class="fa-solid fa-user"></i>
-    `;
-    userIcon.title = userName;
-
-    // 드롭다운 메뉴 추가
-    const parent = userIcon.parentElement;
-
-    // 기존 드롭다운이 있으면 제거
-    const existingDropdown = parent.querySelector('.user-dropdown');
-    if (existingDropdown) {
-      existingDropdown.remove();
+    // 기존 로그인 아이콘 제거
+    if (userIcon) {
+      userIcon.remove();
     }
 
-    const dropdown = document.createElement('div');
-    dropdown.className = 'user-dropdown';
-    dropdown.innerHTML = `
-      <div class="user-info">
-        <p class="user-name">${userName}</p>
-        <p class="user-email">${userEmail}</p>
-      </div>
-      <button onclick="logout()" class="logout-btn">로그아웃</button>
+    // 기존 user-info-box가 있으면 제거
+    const existingUserInfo = headerRight.querySelector('.user-info-box');
+    if (existingUserInfo) {
+      existingUserInfo.remove();
+    }
+
+    // 새로운 사용자 정보 박스 생성
+    const userInfoBox = document.createElement('div');
+    userInfoBox.className = 'user-info-box';
+    userInfoBox.innerHTML = `
+      <i class="fa-solid fa-user"></i>
+      <span class="user-id">${userName}</span>
+      <span class="divider">|</span>
+      <button onclick="logout()" class="logout-link">로그아웃</button>
     `;
 
-    parent.style.position = 'relative';
-    parent.appendChild(dropdown);
-
-    // 사용자 아이콘 클릭 시 드롭다운 토글
-    userIcon.addEventListener('click', function(e) {
-      e.preventDefault();
-      dropdown.classList.toggle('show');
-    });
-
-    // 외부 클릭 시 드롭다운 닫기
-    document.addEventListener('click', function(e) {
-      if (!parent.contains(e.target)) {
-        dropdown.classList.remove('show');
-      }
-    });
+    // 헤더 우측에 추가
+    headerRight.appendChild(userInfoBox);
   } else {
     // 로그아웃된 상태
-    userIcon.href = 'login.html';
-    userIcon.innerHTML = '<i class="fa-solid fa-user"></i>';
-    userIcon.title = '로그인';
+    // 기존 user-info-box 제거
+    const existingUserInfo = headerRight.querySelector('.user-info-box');
+    if (existingUserInfo) {
+      existingUserInfo.remove();
+    }
+
+    // 로그인 아이콘이 없으면 추가
+    if (!userIcon) {
+      const loginIcon = document.createElement('a');
+      loginIcon.href = 'login.html';
+      loginIcon.className = 'icon-link';
+      loginIcon.title = '로그인';
+      loginIcon.innerHTML = '<i class="fa-solid fa-user"></i>';
+      headerRight.appendChild(loginIcon);
+    }
   }
 }
 
