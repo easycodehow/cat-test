@@ -3,78 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>로그인 - 고양이 쇼핑몰</title>
+  <title>로그인 - CATHOME</title>
 
-  <!-- Pretendard 폰트 -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Noto Sans KR 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 아이콘 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Supabase 클라이언트 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-<body>
+<body class="login-page">
   <!-- 헤더 영역 -->
-  <header>
-    <h1>고양이 쇼핑몰</h1>
+  <header class="login-header">
+    <div class="container">
+      <a href="index.html" class="login-logo">
+        <img src="img/logo_ko.png" alt="CATHOME">
+      </a>
+    </div>
   </header>
 
   <!-- 메인 컨텐츠 -->
-  <main>
-    <section class="login-container">
-      <h2>로그인</h2>
+  <main class="login-main">
+    <div class="login-container">
+      <div class="login-box">
+        <!-- 로그인 폼 -->
+        <div id="loginFormContainer" class="form-container">
+          <h2 class="form-title">로그인</h2>
 
-      <!-- 로그인 폼 -->
-      <form id="loginForm" class="login-form">
-        <div class="form-group">
-          <label for="email">이메일</label>
-          <input type="email" id="email" name="email" placeholder="이메일을 입력하세요" required>
+          <!-- 에러 메시지 -->
+          <div id="loginError" class="error-message" style="display: none;"></div>
+
+          <form id="loginForm" class="auth-form">
+            <div class="form-group">
+              <label for="loginEmail">이메일</label>
+              <input type="email" id="loginEmail" name="email" placeholder="이메일을 입력하세요" required>
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword">비밀번호</label>
+              <input type="password" id="loginPassword" name="password" placeholder="비밀번호를 입력하세요" required>
+            </div>
+
+            <button type="submit" class="btn-submit">로그인</button>
+          </form>
+
+          <div class="form-footer">
+            <p>아직 회원이 아니신가요? <a href="#" id="showSignup" class="link-text">회원가입</a></p>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="password">비밀번호</label>
-          <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요" required>
+        <!-- 회원가입 폼 -->
+        <div id="signupFormContainer" class="form-container" style="display: none;">
+          <h2 class="form-title">회원가입</h2>
+
+          <!-- 에러 메시지 -->
+          <div id="signupError" class="error-message" style="display: none;"></div>
+          <!-- 성공 메시지 -->
+          <div id="signupSuccess" class="success-message" style="display: none;"></div>
+
+          <form id="signupForm" class="auth-form">
+            <div class="form-group">
+              <label for="signupEmail">이메일</label>
+              <input type="email" id="signupEmail" name="email" placeholder="이메일을 입력하세요" required>
+            </div>
+
+            <div class="form-group">
+              <label for="signupPassword">비밀번호</label>
+              <input type="password" id="signupPassword" name="password" placeholder="비밀번호 (최소 6자)" required minlength="6">
+            </div>
+
+            <div class="form-group">
+              <label for="signupPasswordConfirm">비밀번호 확인</label>
+              <input type="password" id="signupPasswordConfirm" name="passwordConfirm" placeholder="비밀번호를 다시 입력하세요" required>
+            </div>
+
+            <button type="submit" class="btn-submit">회원가입</button>
+          </form>
+
+          <div class="form-footer">
+            <p>이미 회원이신가요? <a href="#" id="showLogin" class="link-text">로그인</a></p>
+          </div>
         </div>
-
-        <button type="submit" class="btn-login">로그인</button>
-      </form>
-
-      <!-- 회원가입 링크 -->
-      <div class="signup-link">
-        <p>아직 회원이 아니신가요? <a href="#" id="showSignup">회원가입</a></p>
       </div>
-
-      <!-- 회원가입 폼 -->
-      <form id="signupForm" class="signup-form" style="display: none;">
-        <h2>회원가입</h2>
-
-        <div class="form-group">
-          <label for="signupEmail">이메일</label>
-          <input type="email" id="signupEmail" name="email" placeholder="이메일을 입력하세요" required>
-        </div>
-
-        <div class="form-group">
-          <label for="signupPassword">비밀번호</label>
-          <input type="password" id="signupPassword" name="password" placeholder="비밀번호를 입력하세요" required>
-        </div>
-
-        <div class="form-group">
-          <label for="signupPasswordConfirm">비밀번호 확인</label>
-          <input type="password" id="signupPasswordConfirm" name="passwordConfirm" placeholder="비밀번호를 다시 입력하세요" required>
-        </div>
-
-        <button type="submit" class="btn-signup">회원가입</button>
-      </form>
-
-      <!-- 로그인으로 돌아가기 -->
-      <div class="login-link" style="display: none;">
-        <p>이미 회원이신가요? <a href="#" id="showLogin">로그인</a></p>
-      </div>
-    </section>
+    </div>
   </main>
 
-  <!-- 푸터 영역 -->
-  <footer>
-    <p>&copy; 2024 고양이 쇼핑몰. All rights reserved.</p>
-  </footer>
-
+  <!-- Supabase 클라이언트 설정 -->
+  <script src="js/supabase.js"></script>
+  <!-- 로그인 스크립트 -->
   <script src="js/login.js"></script>
 </body>
 </html>
