@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 // 로그인 상태 확인
 async function checkAuth() {
   try {
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await window.supabaseClient.auth.getSession();
 
     if (session) {
       currentUser = session.user;
@@ -29,7 +29,7 @@ async function checkAuth() {
 // 로그아웃
 async function logout() {
   try {
-    const { error } = await supabase.auth.signOut();
+    const { error } = await window.supabaseClient.auth.signOut();
 
     if (error) throw error;
 

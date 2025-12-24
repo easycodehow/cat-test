@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const password = document.getElementById('loginPassword').value;
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { data, error } = await window.supabaseClient.auth.signInWithPassword({
         email: email,
         password: password
       });
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     try {
-      const { data, error } = await supabase.auth.signUp({
+      const { data, error } = await window.supabaseClient.auth.signUp({
         email: email,
         password: password
       });
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 로그인 상태 확인 및 리디렉션
   async function checkAuthAndRedirect() {
-    const { data: { session } } = await supabase.auth.getSession();
+    const { data: { session } } = await window.supabaseClient.auth.getSession();
 
     if (session) {
       // 이미 로그인되어 있으면 메인 페이지로
