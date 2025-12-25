@@ -44,7 +44,7 @@ async function logout() {
 // UI 업데이트
 function updateAuthUI() {
   const headerRight = document.querySelector('.header-right');
-  const userIcon = document.querySelector('.header-right .icon-link[title="로그인"]');
+  const authLink = document.getElementById('authLink');
 
   if (!headerRight) return;
 
@@ -53,9 +53,9 @@ function updateAuthUI() {
     const userEmail = currentUser.email;
     const userName = userEmail.split('@')[0]; // 이메일의 @ 앞부분을 사용자명으로 사용
 
-    // 기존 로그인 아이콘 제거
-    if (userIcon) {
-      userIcon.remove();
+    // 기존 로그인 아이콘 숨기기
+    if (authLink) {
+      authLink.classList.add('hidden');
     }
 
     // 기존 user-info-box가 있으면 제거
@@ -68,7 +68,6 @@ function updateAuthUI() {
     const userInfoBox = document.createElement('div');
     userInfoBox.className = 'user-info-box';
     userInfoBox.innerHTML = `
-      <i class="fa-solid fa-user"></i>
       <span class="user-id">${userName}</span>
       <span class="divider">|</span>
       <button onclick="logout()" class="logout-link">로그아웃</button>
@@ -84,14 +83,9 @@ function updateAuthUI() {
       existingUserInfo.remove();
     }
 
-    // 로그인 아이콘이 없으면 추가
-    if (!userIcon) {
-      const loginIcon = document.createElement('a');
-      loginIcon.href = 'login.html';
-      loginIcon.className = 'icon-link';
-      loginIcon.title = '로그인';
-      loginIcon.innerHTML = '<i class="fa-solid fa-user"></i>';
-      headerRight.appendChild(loginIcon);
+    // 로그인 아이콘 다시 표시
+    if (authLink) {
+      authLink.classList.remove('hidden');
     }
   }
 }

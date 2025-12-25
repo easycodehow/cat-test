@@ -3,40 +3,100 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>집사 커뮤니티 - 고양이 쇼핑몰</title>
+  <title>집사 커뮤니티 - CATHOME</title>
 
-  <!-- Pretendard 폰트 -->
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <!-- Noto Sans KR 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 아이콘 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <!-- 헤더 영역 -->
-  <header>
-    <h1>고양이 쇼핑몰</h1>
-    <nav>
-      <ul>
-        <li><a href="index.html">홈</a></li>
-        <li><a href="board.html">집사 커뮤니티</a></li>
-        <li><a href="login.html" id="authLink">로그인</a></li>
-      </ul>
-    </nav>
+  <header class="header">
+    <!-- 상단 공지 영역 -->
+    <div class="header-top">
+      <div class="header-notice">
+        <span>공지</span> • 무료 배송 이벤트 진행중!
+      </div>
+    </div>
+
+    <!-- 메인 헤더 -->
+    <div class="header-main">
+      <div class="container">
+        <div class="header-content">
+          <!-- 로고 -->
+          <div class="header-left">
+            <a href="index.html" class="logo">
+              <img src="img/logo_ko.png" alt="CATHOME">
+            </a>
+          </div>
+
+          <!-- 검색바 -->
+          <div class="header-center">
+            <div class="search-bar">
+              <input type="text" placeholder="어떤 상품을 찾으세요?">
+              <button type="button" class="search-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- 우측 아이콘 메뉴 -->
+          <div class="header-right">
+            <a href="#" class="icon-link" title="알림">
+              <i class="fa-solid fa-bell"></i>
+            </a>
+            <a href="#" class="icon-link" title="장바구니">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+            <a href="login.html" class="icon-link" id="authLink" title="로그인">
+              <i class="fa-solid fa-user"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 네비게이션 바 -->
+    <div class="header-nav">
+      <div class="container">
+        <nav class="nav">
+          <a href="#" class="nav-link">카테고리</a>
+          <a href="#" class="nav-link">핫딜</a>
+          <a href="#" class="nav-link">신상품</a>
+          <a href="#" class="nav-link">랭킹</a>
+          <a href="#" class="nav-link">이벤트</a>
+          <a href="#" class="nav-link">체험단</a>
+          <a href="board.html" class="nav-link active">집사커뮤니티</a>
+        </nav>
+      </div>
+    </div>
   </header>
 
   <!-- 메인 컨텐츠 -->
   <main>
     <section class="board-container">
       <div class="board-header">
+        <!-- 제목 -->
         <h2>집사 커뮤니티</h2>
 
-        <!-- 검색 영역 -->
-        <div class="search-container">
-          <input type="text" id="searchInput" placeholder="제목 검색">
-          <button id="searchBtn">검색</button>
-        </div>
+        <!-- 글쓰기와 검색 영역을 한 줄로 -->
+        <div class="board-actions">
+          <button id="writeBtn" class="btn-write">글쓰기</button>
 
-        <!-- 글쓰기 버튼 -->
-        <button id="writeBtn" class="btn-write">글쓰기</button>
+          <div class="search-container">
+            <input type="text" id="searchInput" placeholder="검색어를 입력해주세요." lang="ko">
+            <button id="searchBtn">검색</button>
+          </div>
+        </div>
       </div>
 
       <!-- 게시글 목록 -->
@@ -44,16 +104,22 @@
         <table class="post-table">
           <thead>
             <tr>
-              <th>번호</th>
+              <th style="width: 80px;">번호</th>
               <th>제목</th>
-              <th>작성자</th>
-              <th>작성일</th>
+              <th style="width: 120px;">작성자</th>
+              <th style="width: 150px;">작성일</th>
+              <th style="width: 80px;">조회수</th>
             </tr>
           </thead>
           <tbody id="postList">
             <!-- 게시글 목록이 여기에 동적으로 생성됩니다 -->
           </tbody>
         </table>
+      </div>
+
+      <!-- 페이지네이션 -->
+      <div class="pagination" id="pagination">
+        <!-- 페이지 버튼이 여기에 동적으로 생성됩니다 -->
       </div>
     </section>
 
@@ -64,12 +130,12 @@
       <form id="writeForm" class="write-form">
         <div class="form-group">
           <label for="postTitle">제목</label>
-          <input type="text" id="postTitle" name="title" placeholder="제목을 입력하세요" required>
+          <input type="text" id="postTitle" name="title" placeholder="제목을 입력하세요" lang="ko" required>
         </div>
 
         <div class="form-group">
           <label for="postContent">내용</label>
-          <textarea id="postContent" name="content" rows="10" placeholder="내용을 입력하세요" required></textarea>
+          <textarea id="postContent" name="content" rows="10" placeholder="내용을 입력하세요" lang="ko" required></textarea>
         </div>
 
         <div class="form-group">
@@ -114,7 +180,7 @@
 
         <!-- 댓글 작성 -->
         <form id="commentForm" class="comment-form">
-          <textarea id="commentContent" placeholder="댓글을 입력하세요" rows="3" required></textarea>
+          <textarea id="commentContent" placeholder="댓글을 입력하세요" rows="3" lang="ko" required></textarea>
           <button type="submit" class="btn-comment">댓글 작성</button>
         </form>
 
@@ -127,10 +193,65 @@
   </main>
 
   <!-- 푸터 영역 -->
-  <footer>
-    <p>&copy; 2024 고양이 쇼핑몰. All rights reserved.</p>
+  <footer class="footer">
+    <div class="footer-banners">
+      <div class="container">
+        <div class="banner-grid">
+          <div class="footer-banner">
+            <div class="banner-title">지금만 세트할인 10%</div>
+            <div class="banner-desc">추천상품 체험단 모집</div>
+          </div>
+          <div class="footer-banner">
+            <div class="banner-title">생후 3개월 이후 급여 가능</div>
+            <div class="banner-desc">영양 균형</div>
+          </div>
+          <div class="footer-banner">
+            <div class="banner-title">사람의 신뢰도 구매시</div>
+            <div class="banner-desc">안심 배송</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-info">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-top">
+            <div class="footer-logo">CATHOME</div>
+            <div class="footer-sns">
+              <a href="#" class="sns-link" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="#" class="sns-link" title="YouTube">
+                <i class="fa-brands fa-youtube"></i>
+              </a>
+              <a href="#" class="sns-link" title="Blog">
+                <i class="fa-solid fa-blog"></i>
+              </a>
+            </div>
+          </div>
+          <div class="footer-links">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">고객센터</a>
+          </div>
+          <div class="footer-text">
+            <p>상호명: CATHOME | 대표자: 박지연 | 사업자등록번호: 123-45-67890</p>
+            <p>주소: 서울특별시 강남구 테헤란로 123</p>
+            <p>이메일: contact@cathome.kr | 전화: 1234-5678 | 개인정보책임자: 박지연</p>
+          </div>
+          <div class="footer-copyright">
+            <p>&copy; 2024 CATHOME. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <!-- Supabase 클라이언트 설정 -->
+  <script src="js/supabase.js"></script>
+  <!-- 인증 관리 -->
+  <script src="js/auth.js"></script>
+  <!-- 게시판 기능 -->
   <script src="js/board.js"></script>
 </body>
 </html>
